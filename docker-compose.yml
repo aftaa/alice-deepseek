@@ -1,0 +1,18 @@
+services:
+    nginx:
+        image: nginx:1.29.8
+        ports: 
+            - "49030:80"
+        volumes:
+            - .:/var/www/alice-deepseek
+            - ./nginx-conf:/etc/nginx/conf.d
+        depends_on:
+            php:
+                condition: service_started
+        restart: always
+
+    php:
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        restart: always
