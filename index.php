@@ -11,10 +11,12 @@ $dotenv->load();
 // Инициализация клиента DeepSeek
 $client = new Client([
     'base_uri' => 'https://api.deepseek.com', // URL API DeepSeek
-    'timeout'  => 3.0,
+    'timeout'  => 3.5,
 ]);
 
 // Хранение состояния пользователей (можно заменить на базу данных)
+ini_set('session.save_handler', 'redis');
+ini_set('session.save_path', 'tcp://redis:6379');
 session_start();
 if (!isset($_SESSION['users_state'])) {
     $_SESSION['users_state'] = [];
