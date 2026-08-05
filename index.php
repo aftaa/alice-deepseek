@@ -11,7 +11,7 @@ $dotenv->load();
 // Инициализация клиента DeepSeek
 $client = new Client([
     'base_uri' => 'https://api.deepseek.com', // URL API DeepSeek
-    'timeout'  => 30.0,
+    'timeout'  => 3.0,
 ]);
 
 // Хранение состояния пользователей (можно заменить на базу данных)
